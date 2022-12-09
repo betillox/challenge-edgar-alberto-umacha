@@ -30,7 +30,7 @@ pipeline {
 
         stage('Tag docker image') {
             steps {
-                sh 'docker image tag spring-webapp betillo/final-challenge-webapp:latest'
+                sh 'docker image tag final-challenge-webapp betillo/final-challenge-webapp:latest'
             }
         }
 

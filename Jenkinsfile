@@ -36,10 +36,10 @@ pipeline {
 
         stage('Upload docker image') {
             steps {
-          	sh 'docker login -u betillo -p Guitarra123.'
-      	  	sh 'docker image push betillo/final-challenge-webapp:latest'
-            }
-        }
+		withCredentials([string(credentialsId: '', variable: 'docker-credentials')]) {
+		sh 'docker login -u betillo -p ${docker-credentials}'
+		sh 'docker image push betillo/final-challenge-webapp:latest'}        
+	}	
     }
 } 
 

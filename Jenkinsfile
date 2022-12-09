@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'jenkins-worker'
+        label 'prod-nodo'
     }
 
     stages {
@@ -24,20 +24,20 @@ pipeline {
 
         stage('Build docker image') {
             steps {
-                sh 'docker image build -t spring-webapp .'
+                sh 'docker image build -t final-challenge-webapp .'
             }
         }
 
         stage('Tag docker image') {
             steps {
-                sh 'docker image tag spring-webapp betillo/spring-webapp:latest'
+                sh 'docker image tag spring-webapp betillo/final-challenge-webapp:latest'
             }
         }
 
         stage('Upload docker image') {
             steps {
           	sh 'docker login -u betillo -p Guitarra123.'
-      	  	sh 'docker image push betillo/spring-webapp:latest'
+      	  	sh 'docker image push betillo/final-challenge-webapp:latest'
             }
         }
     }
